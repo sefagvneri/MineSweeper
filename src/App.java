@@ -10,9 +10,12 @@ public class App {
         row = sc.nextInt();
         System.out.println("Enter the col number: ");
         col = sc.nextInt();
-
+        
+    
         MineSweeper mine = new MineSweeper(row, col);
         mine.run();
+        
+        
 
     }
 }

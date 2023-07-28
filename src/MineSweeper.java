@@ -18,7 +18,7 @@ public class MineSweeper {
     }
 
     public void run() {
-        int row, col;
+        int row, col, success=0;
         prepareGame();
         board();
         print(map);
@@ -29,33 +29,51 @@ public class MineSweeper {
             row = sc.nextInt();
             System.out.println("Col: ");
             col = sc.nextInt();
+            if(row < 0 || col < 0 || row > rowNumber || col > colNumber) {
+                System.out.println("Wrong row or col value, please try again.");
+                continue;
+            }
             if(map[row][col]!="*"){
                 checkMine(row,col);
+                success++;
+                if(success==size/4) {
+                    System.out.println("Congratulations, you won!");
+                    print(map);
+                }
             }
+            else{
+                System.out.println("Game Over.");
+                print(map);
+                isGame = false;     
+            }
+            
 
         }
     }
     void checkMine(int row, int col) {
         int count = 0;
-        if(map[row][col+1] == "*"){
+        if(map[row][col] == "-") {
+            if((col < colNumber-1) && (map[row][col+1] == "*")){
             count++;
             board[row][col] = Integer.toString(count);
         }
-        if(map[row+1][col] == "*"){
+        if((row < rowNumber-1) && (map[row+1][col] == "*")){
             count++;
             board[row][col] = Integer.toString(count);
         }
-        if(map[row-1][col] == "*"){
+        if((row>0) && (map[row-1][col] == "*")){
             count++;
             board[row][col] = Integer.toString(count);
         }
-        if(map[row][col-1] == "*"){
+        if((col > 0)&&(map[row][col-1] == "*")){
             count++;
             board[row][col] = Integer.toString(count);
         }
         else{
             board[row][col] = Integer.toString(count);
         }
+        }
+        
     }
     public void board() {
         for(int i=0; i<rowNumber; i++){
