@@ -2,7 +2,7 @@
 
 ## *Game Features: 
 
--The game is text based.
+1.The game is text based.
 -The user determines the size of the matrix, that is, the number of rows and columns.
 -Random mines are placed as a quarter of the number of elements of the array (number of elements / 4). For example, if the array is 4x3 in size, the number of elements is calculated with the formula (number of rows * number of columns) and its size is 12. In this case, the number of mines becomes 12 / 4 = 3 pieces.
 -The user selects a point on the matrix. Enters row and column values ​​for point selection.
